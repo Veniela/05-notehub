@@ -1,5 +1,18 @@
 import css from "./Loader.module.css";
 
-export default function Loader() {
-  return <p className={css.text}>Loading movies, please wait...</p>;
+interface LoaderProps {
+  size?: "small" | "medium" | "large";
 }
+
+function Loader({ size = "medium" }: LoaderProps) {
+  const sizeClass =
+    size === "small" ? css.small : size === "large" ? css.large : "";
+
+  return (
+    <div className={css.loaderWrapper}>
+      <div className={`${css.loader} ${sizeClass}`} />
+    </div>
+  );
+}
+
+export default Loader;
